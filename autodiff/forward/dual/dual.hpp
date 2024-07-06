@@ -1000,13 +1000,13 @@ AUTODIFF_DEVICE_FUNC constexpr void assign(Dual<T, G>& self, U&& other)
     }
     // ASSIGN AN ADDITION EXPRESSION: self = expr + expr
     else if constexpr (isAddExpr<U>) {
-        assign(self, other.r);
-        assignAdd(self, other.l);
+        assign(self, other.l);
+        assignAdd(self, other.r);
     }
     // ASSIGN A MULTIPLICATION EXPRESSION: self = expr * expr
     else if constexpr (isMulExpr<U>) {
-        assign(self, other.r);
-        assignMul(self, other.l);
+        assign(self, other.l);
+        assignMul(self, other.r);
     }
     // ASSIGN A POWER EXPRESSION: self = pow(expr)
     else if constexpr (isPowExpr<U>) {
@@ -1042,13 +1042,13 @@ AUTODIFF_DEVICE_FUNC constexpr void assign(Dual<T, G>& self, U&& other, Dual<T, 
     }
     // ASSIGN AN ADDITION EXPRESSION: self = expr + expr
     else if constexpr (isAddExpr<U>) {
-        assign(self, other.r, tmp);
-        assignAdd(self, other.l, tmp);
+        assign(self, other.l, tmp);
+        assignAdd(self, other.r, tmp);
     }
     // ASSIGN A MULTIPLICATION EXPRESSION: self = expr * expr
     else if constexpr (isMulExpr<U>) {
-        assign(self, other.r, tmp);
-        assignMul(self, other.l, tmp);
+        assign(self, other.l, tmp);
+        assignMul(self, other.r, tmp);
     }
     // ASSIGN A POWER EXPRESSION: self = pow(expr, expr)
     else if constexpr (isPowExpr<U>) {
